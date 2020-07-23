@@ -28,6 +28,47 @@ class LinkedList():
         else:
             self.head = new_element
 
+    def get_position(self, position):
+        #l1.head.next.next 
+        target = self.head 
+        if position > 1:
+            for i in range(position - 1 ):
+                 target = target.next
+        return target
+
+
+
+    def insert(self, new_element, position):       
+        if position > 1:
+            target = self.head
+            for i in range(position - 2):
+                target = target.next 
+            new_element.next = target.next 
+            target.next = new_element 
+        elif position == 1:
+            new_element.next = self.head 
+            self.head = new_element 
+            
+
+    def delete(self, value):
+        target = self.head 
+        position = 1
+        while True:
+            if target.value == value:
+                break
+            else: 
+                target = target.next 
+                position += 1
+        
+        if position > 1:
+            current = self.head 
+            for j in range(position - 2):
+                current = current.next
+            current.next = target.next
+        elif position == 1:
+            self.head = target.next 
+           
+
 
 if __name__ == "__main__":
 
@@ -46,6 +87,24 @@ if __name__ == "__main__":
     # Test get_position
     # Should print 3
     print(l1.head.next.next.value) 
+    # Should also print 3
+    print(l1.get_position(3).value) 
+
+    # Test insert 
+    l1.insert(e4, 3)
+    # Should print 4 now
+    print(l1.get_position(3).value)
+
+    # Test delete
+    l1.delete(1)
+    # Should print 2 now 
+    print(l1.get_position(1).value)
+    # Should print 4 now 
+    print(l1.get_position(2).value)
+    # Should print 3 now 
+    print(l1.get_position(3).value)
+
+
 
 
    
