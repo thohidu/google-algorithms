@@ -31,12 +31,7 @@ class LinkedList():
             self.head = new_element 
 
     # This method returns the element at a certain position 
-    def get_position(self, position):
-        # target = self.head 
-        # if position > 1:
-        #     for i in range(position - 1):
-        #         target = target.next
-        # return target  
+    def get_position(self, position):  
         current = self.head
         counter = 1
         if position < 1:
@@ -50,15 +45,6 @@ class LinkedList():
 
     # This method will insert an element to a particular spot in the list 
     def insert(self, new_element, position):
-        # if position > 1:
-        #     previous = self.head 
-        #     for i in range(position-2):
-        #         previous = previous.next
-        #     new_element.next = previous.next
-        #     previous.next = new_element
-        # elif position == 1:
-        #     new_element.next = self.head 
-        #     self.head = new_element
         current = self.head 
         counter = 1
         if position > 1:            
@@ -74,21 +60,6 @@ class LinkedList():
 
     # This method will delete the first element with that particular value
     def delete(self, value):
-        # current = self.head
-        # position = 1
-        # while True:
-        #     if current.value == value:
-        #         break
-        #     else:
-        #         current = current.next 
-        #         position += 1 
-        # if position > 1:
-        #     previous = self.head
-        #     for i in range(position - 2):
-        #         previous = previous.next 
-        #     previous.next = current.next
-        # elif position == 1:
-        #     self.head = self.head.next
         current = self.head
         previous = None 
         # Locate the current and the previous element
