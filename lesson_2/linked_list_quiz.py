@@ -9,16 +9,18 @@ Then, use "Test Run" and "Submit" to run the test cases
 at the bottom."""
 
 
+# Single unit in a linked list 
 class Element():
     def __init__(self, value):
         self.value = value 
         self.next = None 
 
-
+# Defining the linked list with the first element, defaults to None
 class LinkedList():
     def __init__(self, head=None):
         self.head = head
-
+    
+    # This method will add a new element to the end of our LinkedList
     def append(self, new_element):
         n = self.head
         if self.head:
@@ -27,7 +29,9 @@ class LinkedList():
             n.next = new_element                   
         else:
             self.head = new_element
-
+    
+    # This method returns the element at a certain position
+    # Include index out of range error handling
     def get_position(self, position):
         #l1.head.next.next 
         target = self.head 
@@ -36,21 +40,21 @@ class LinkedList():
                  target = target.next
         return target
 
-
-
+    # This method will insert an element to a particular spot in the list
     def insert(self, new_element, position):       
         if position > 1:
-            target = self.head
+            previous = self.head
             for i in range(position - 2):
-                target = target.next 
-            new_element.next = target.next 
-            target.next = new_element 
+                previous = previous.next 
+            new_element.next = previous.next 
+            previous.next = new_element 
         elif position == 1:
             new_element.next = self.head 
             self.head = new_element 
             
-
+    # This method will delete the first element with that value
     def delete(self, value):
+        # Determine the position of the element with the target value
         target = self.head 
         position = 1
         while True:
@@ -58,17 +62,16 @@ class LinkedList():
                 break
             else: 
                 target = target.next 
-                position += 1
-        
+                position += 1        
+        # Change the memory reference for the purpose of deleting
         if position > 1:
-            current = self.head 
+            previous = self.head 
             for j in range(position - 2):
-                current = current.next
-            current.next = target.next
+                previous = previous.next
+            previous.next = target.next
         elif position == 1:
             self.head = target.next 
            
-
 
 if __name__ == "__main__":
 
