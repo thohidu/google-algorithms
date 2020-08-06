@@ -15,23 +15,15 @@ def binary_search(input_array, value):
     n = len(input_array)
     start_idx = 0
     end_idx = n - 1 
-    while True:
-        # mid_index = n//2
+    while start_idx <= end_idx:
         mid_dist = (end_idx - start_idx + 1)//2
         mid_idx = start_idx + mid_dist  # for even, right end value
         if value == input_array[mid_idx]:
-            return mid_idx
-     
+            return mid_idx     
         elif value > input_array[mid_idx]:
-            if start_idx == end_idx:
-                break
             start_idx = mid_idx + 1
-
         elif value < input_array[mid_idx]:
-            if start_idx == end_idx:
-                break
-            end_idx = mid_idx - 1
-    
+            end_idx = mid_idx - 1    
     return -1
 
 if __name__ == "__main__":
